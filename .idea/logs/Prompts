@@ -1,0 +1,90 @@
+Aula 1-
+Crie o diagrama UML e gere as classes Java para uma calculadora avançada com as seguintes funcionalidades:
+--------------Operações:-----------------------
+
+Adição, Subtração, Multiplicação, Divisão,Potência, Raiz Quadrada
+
+Memória:Armazenar e recuperar valores
+
+Visor:Exibir o resultado da operação
+
+Bateria:Verificar o nível de carga
+
+--------------------Classes:----------------
+
+Calculadora: Atributos: botoes, bateria, visor, memoria, valorAtual. Métodos: operações, armazenarMemoria(), obterMemoria(), exibirVisor(), verificarBateria().
+
+Botao: Atributos: texto, tipo, acao. Método: pressionar().
+
+Visor: Atributo: valor. Método: exibir().
+
+Memoria: Atributo: valorMemoria. Métodos: armazenar(), obterValor(), limpar().
+
+Bateria: Atributo: nivel. Método: verificarNivel().
+
+Relacionamento:Calculadora tem múltiplos Botao, um Visor, uma Memoria e uma Bateria
+
+--------------------Criar o Uml-
+cria uma prompt para o plant uml-
+Resposta:@startuml
+
+         ' Classe Calculadora
+         class Calculadora {
+             - botoes: List<Button>
+             - bateria: double
+             - visor: String
+             - memoria: double
+             - valorAtual: double
+             + adicionar(a: double, b: double): double
+             + subtrair(a: double, b: double): double
+             + multiplicar(a: double, b: double): double
+             + dividir(a: double, b: double): double
+             + potencia(base: double, expoente: double): double
+             + raizQuadrada(a: double): double
+             + armazenarMemoria(): void
+             + obterMemoria(): double
+             + limparMemoria(): void
+             + obterValorAtual(): double
+             + limpar(): void
+             + verificarBateria(): void
+             + exibirVisor(): void
+         }
+
+         ' Classe Button
+         class Button {
+             - texto: String
+             - tipo: String
+             - acao: Function
+             + pressionar(): void
+         }
+
+         ' Classe Visor
+         class Visor {
+             - valor: String
+             + exibir(valor: String): void
+         }
+
+         ' Classe Memoria
+         class Memoria {
+             - valorMemoria: double
+             + armazenar(valor: double): void
+             + obterValor(): double
+             + limpar(): void
+         }
+
+         ' Classe Bateria
+         class Bateria {
+             - nivel: double
+             + verificarNivel(): double
+         }
+
+         ' Relacionamentos
+         Calculadora "1" -- "*" Button : possui >
+         Calculadora "1" -- "1" Visor : tem >
+         Calculadora "1" -- "1" Memoria : tem >
+         Calculadora "1" -- "1" Bateria : tem >
+
+         @enduml
+
+
+----------------------------------
