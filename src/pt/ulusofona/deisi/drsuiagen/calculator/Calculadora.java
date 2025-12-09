@@ -14,67 +14,61 @@ public class Calculadora {
         this.valorAtual = 0;
     }
 
+    private void gastarBateria() {
+        bateria.gastar(5);
+    }
+
+    private void atualizarVisor() {
+        visor.exibir(valorAtual + " | Bateria: " + bateria.verificarNivel() + "%");
+    }
+
     public double adicionar(double a, double b) {
         gastarBateria();
         valorAtual = a + b;
-        visor.exibir(String.valueOf(valorAtual));
+        atualizarVisor();
         return valorAtual;
     }
 
     public double subtrair(double a, double b) {
         gastarBateria();
         valorAtual = a - b;
-        visor.exibir(String.valueOf(valorAtual));
+        atualizarVisor();
         return valorAtual;
     }
 
     public double multiplicar(double a, double b) {
         gastarBateria();
         valorAtual = a * b;
-        visor.exibir(String.valueOf(valorAtual));
+        atualizarVisor();
         return valorAtual;
     }
 
     public double dividir(double a, double b) {
         gastarBateria();
         if (b == 0) {
-            visor.exibir("Erro: divisão por zero");
+            visor.exibir("Erro: divisão por zero | Bateria: " + bateria.verificarNivel() + "%");
             return Double.NaN;
         }
         valorAtual = a / b;
-        visor.exibir(String.valueOf(valorAtual));
+        atualizarVisor();
         return valorAtual;
     }
 
-    public void armazenarMemoria() {
-        memoria.armazenar(valorAtual);
-    }
-
-    public double obterMemoria() {
-        double valor = memoria.obterValor();
-        visor.exibir(String.valueOf(valor));
-        return valor;
-    }
-
-    public void limparMemoria() {
-        memoria.limpar();
-    }
-
-    public double obterValorAtual() {
+    // Potência: a ^ b
+    public double potencia(double base, double expoente) {
+        gastarBateria();
+        valorAtual = Math.pow(base, expoente);
+        atualizarVisor();
         return valorAtual;
     }
 
-    public void limpar() {
-        valorAtual = 0;
-        visor.limpar();
+    // Operação “genérica” para coisas fora das 4 operações (ex.: desenhar gráfico)
+    public void gastarOperacaoExtra() {
+        gastarBateria();
+        visor.exibir("Operação realizada | Bateria: " + bateria.verificarNivel() + "%");
     }
 
-    public void verificarBateria() {
-        double nivel = bateria.verificarNivel();
-        visor.exibir("Bateria: " + nivel + "%");
-    }
-
-    private void gastarBateria() {
-        bateria.gastar(1);  // gasta 1% por operação
+    public double getNivelBateria() {
+        return bateria.verificarNivel();
     }
 }

@@ -8,7 +8,17 @@ public class Botao {
     public Botao(String texto, String tipo) {
         this.texto = texto;
         this.tipo = tipo;
+    }
 
+    public String getTexto() {
+        return texto;
+    }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public Object pressionar() {
+        return 1;
     }
 }

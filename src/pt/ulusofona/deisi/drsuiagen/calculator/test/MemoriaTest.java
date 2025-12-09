@@ -1,6 +1,7 @@
-package pt.ulusofona.deisi.drsuiagen.calculator;
+package pt.ulusofona.deisi.drsuiagen.calculator.test;
 
 import org.junit.jupiter.api.Test;
+import pt.ulusofona.deisi.drsuiagen.calculator.Memoria;
 
 import static org.junit.jupiter.api.Assertions.*;
 
